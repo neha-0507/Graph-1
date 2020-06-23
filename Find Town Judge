@@ -1,0 +1,15 @@
+# Time Complexity-o(n)
+# Space Complexity -o(n)
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        indegree=[0]*N
+        for i in range(len(trust)):
+            temp=trust[i][0]
+            trusted=trust[i][1]
+            indegree[temp-1]-=1
+            indegree[trusted-1]+=1
+        for i in range(len(indegree)):
+            if indegree[i]==N-1:
+                return i+1
+        return -1
+            
